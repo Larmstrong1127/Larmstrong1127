@@ -34,9 +34,9 @@ M.S. Computer Science, Saint Martin's University (2024) · Dean's List 2019–20
 
 ---
 
-## 🦷 DentaVision *(live in production)*
+## 🦷 DentaVision *(deployed — try the live demo)*
 
-AI dental treatment planning SaaS, built from firsthand experience as a Patient Care Coordinator. Clinics upload a photo of a printed treatment plan → **Claude Vision** extracts CDT codes, tooth numbers and procedure notes → patients get a prioritized visit schedule on an interactive SVG tooth chart, with an AI chat assistant. Dual-role JWT auth, Stripe subscription billing with webhook sync, 20 Jest tests gating deploys through GitHub Actions.
+AI dental treatment planning SaaS, built from firsthand experience as a Patient Care Coordinator. Clinics upload a photo of a printed treatment plan → **Claude Vision** extracts CDT codes, tooth numbers and procedure notes → patients get a prioritized visit schedule on an interactive SVG tooth chart, with an AI chat assistant. Dual-role JWT auth, a Stripe subscription integration (webhook-driven status sync, subscription gating in auth middleware) wired but not processing live payments, and 20 Jest tests gating deploys through GitHub Actions.
 
 `React 18` · `Node.js/Express` · `MongoDB Atlas` · `Claude Vision` · `Stripe` · `Vercel + Render`
 
