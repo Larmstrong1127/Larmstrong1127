@@ -47,7 +47,7 @@ AI dental treatment planning SaaS, built from firsthand experience as a Patient 
 
 ## 🎮 Echoed Nights *(published on Steam)*
 
-My M.S. capstone: a first-person horror game built solo in Unity and C#, taken all the way through commercial release. Enemy AI runs a four-state finite state machine (Patrol → Alert → Chase → Search) over Unity NavMesh, with difficulty that adapts to player performance. I originally architected the AI with reinforcement learning and scoped it down when stable policies proved out of reach on available compute — that decision, and the 19-page capstone report behind it, are in the repo.
+My M.S. capstone: a first-person horror game built solo in Unity and C#, taken all the way through commercial release. Enemy behaviour runs on Unity NavMesh via coroutines and distance thresholds: the monster wanders to random reachable points, chases when you cross a threshold, and — the part I'd defend hardest — backs away when you get too close, because a pursuer you can predict stops being frightening. I originally architected the AI with reinforcement learning and scoped it down when stable policies proved out of reach on available compute. The 19-page capstone report is in the repo; the Unity source is not.
 
 [![Steam](https://img.shields.io/badge/Steam-Echoed%20Nights-1b2838?style=for-the-badge&logo=steam&logoColor=white)](https://store.steampowered.com/app/4340810/Echoed_Nights/)
 [![Repo](https://img.shields.io/badge/Report%20%26%20Docs-Echoed--Nights--Video--Game-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Larmstrong1127/Echoed-Nights-Video-Game)
@@ -56,7 +56,7 @@ My M.S. capstone: a first-person horror game built solo in Unity and C#, taken a
 
 ## ☁️ MedInsight API
 
-Clinical document backend on AWS: containerized FastAPI services on ECS Fargate provisioned with **Terraform** IaC (ECR, S3, DynamoDB), a LangGraph multi-agent pipeline with RAG retrieval, AES-256 encryption and HIPAA-shaped audit logging. Deploys via GitHub Actions using OIDC — no long-lived AWS keys. 40 pytest tests cover auth, encryption and the audit trail end to end.
+Clinical document backend: a LangGraph ReAct agent with four tools over an encrypted document store, Fernet encryption at rest, and an append-only audit trail. Its AWS footprint (ECS Fargate, ECR, S3, DynamoDB) is **defined in four Terraform modules** and deployed by a GitHub Actions pipeline that authenticates over OIDC — no long-lived keys. To be exact: the infrastructure and pipeline are written but have never been run against a live AWS account; the S3/DynamoDB/KMS paths were exercised against LocalStack instead. 40 pytest tests cover auth, encryption and the audit trail end to end.
 
 [![Source](https://img.shields.io/badge/Source-Larmstrong1127/medinsight--api-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Larmstrong1127/medinsight-api)
 
@@ -70,7 +70,7 @@ Clinical document backend on AWS: containerized FastAPI services on ECS Fargate 
 
 **Web** — FastAPI · Next.js · React · Node.js / Express · ASP.NET Core · Prisma · EF Core
 
-**Data & Infra** — PostgreSQL · MongoDB · SQLite · Redis · Docker · AWS (ECS, ECR, S3, DynamoDB) · Terraform · GitHub Actions CI/CD
+**Data & Infra** — PostgreSQL · MongoDB · SQLite · Redis · Docker · Terraform · GitHub Actions CI/CD (OIDC) · Vercel · Render · AWS services written in Terraform and run against LocalStack, not a live account
 
 ---
 
@@ -78,7 +78,7 @@ Clinical document backend on AWS: containerized FastAPI services on ECS Fargate 
 
 | Project | Stack | |
 |---|---|---|
-| **AgentForge** — multi-LLM agent builder with tool calling and SSE streaming | TypeScript, Next.js 14, Prisma | [→](https://github.com/Larmstrong1127/agentforge) |
+| **AgentForge** — multi-LLM agent builder with tool calling and SSE streaming | TypeScript, Next.js 16, Prisma | [→](https://github.com/Larmstrong1127/agentforge) |
 | **DocuChat** — RAG document Q&A with cited answers | FastAPI, ChromaDB, Sentence Transformers | [→](https://github.com/Larmstrong1127/DocuChat) |
 | **WAVets2Tech** — veteran-to-tech career platform, led a team of 4 | React SPA, ASP.NET Core Web API | [→](https://github.com/Larmstrong1127/WAVets2Tech) |
 | **TechCon Convention Site** — exhibitor and booth management | ASP.NET Core MVC, EF Core, SQLite | [→](https://github.com/Larmstrong1127/TechCon-Convention-Site) |
