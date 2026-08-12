@@ -34,6 +34,14 @@ M.S. Computer Science, Saint Martin's University (2024) · Dean's List 2019–20
 
 ---
 
+## 🎞️ Studio tooling — asset-provenance + comfy-workflow-pack
+
+Two halves of one pipeline question: *what made this asset, and how do artists reuse what works?*
+
+**[asset-provenance](https://github.com/Larmstrong1127/asset-provenance)** — a content-addressed registry for AI-generated media: SHA-256 identity, derivation lineage as a DAG, and **OpenUSD export** (provenance in `customData`, lineage as USD relationships). Operated against 1,943 real files from my own generation pipeline: **1,791 assets and 934 derivations registered in 110s** — and the audit found 0 of them had a recoverable model, because generation parameters were never persisted per file. The registry records that as null rather than guessing. 69 tests.
+
+**[comfy-workflow-pack](https://github.com/Larmstrong1127/comfy-workflow-pack)** — packages a ComfyUI graph as a versioned workflow pack with a declared, validated artist-safe parameter surface. **Executed end-to-end against ComfyUI 0.32.0**: bound, submitted through its own client, rendered, then registered into the provenance registry and confirmed in a re-opened USD stage. 118 tests; the README states exactly what one run does and does not verify.
+
 ## 🦷 DentaVision *(deployed — try the live demo)*
 
 AI dental treatment planning SaaS, built from firsthand experience as a Patient Care Coordinator. Clinics upload a photo of a printed treatment plan → **Claude Vision** extracts CDT codes, tooth numbers and procedure notes → patients get a prioritized visit schedule on an interactive SVG tooth chart, with an AI chat assistant. Dual-role JWT auth, a Stripe subscription integration (webhook-driven status sync, subscription gating in auth middleware) wired but not processing live payments, and 20 Jest tests gating deploys through GitHub Actions.
