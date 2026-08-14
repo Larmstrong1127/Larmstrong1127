@@ -27,7 +27,7 @@ M.S. Computer Science, Saint Martin's University (2024) · Dean's List 2019–20
 | `OpenAssistant/reward-model-deberta-v3-large-v2` | 435M | 0.6009 |
 | **Mine — `deberta-preference-reward`** | **184M** | **0.7026** |
 
-*Same held-out split (N=1,987), same harness. Honest caveat: in-distribution for my model, out-of-distribution for the public baseline — and mine scores at chance on a small human-preference probe, which is documented on the model card.*
+*Same held-out split (N=1,987), same harness. Honest caveat: in-distribution for my model, out-of-distribution for the public baseline. On the official **RewardBench 2** (out of distribution, 25% random floor) mine averages 25.3 vs the baseline's 32.0 — the boundary is measured, published with full protocol on the model card, and it is why the card scopes the model to UltraFeedback-distribution comparisons.*
 
 [![Source](https://img.shields.io/badge/Source-Larmstrong1127/evalforge-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Larmstrong1127/evalforge)
 [![Reward Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-deberta--preference--reward-FFD21E?style=for-the-badge)](https://huggingface.co/DantheMan124/deberta-preference-reward)
