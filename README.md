@@ -42,7 +42,7 @@ Two halves of one pipeline question: *what made this asset, and how do artists r
 
 **[comfy-workflow-pack](https://github.com/Larmstrong1127/comfy-workflow-pack)** — packages a ComfyUI graph as a versioned workflow pack with a declared, validated artist-safe parameter surface. **Executed end-to-end against ComfyUI 0.32.0**: bound, submitted through its own client, rendered, then registered into the provenance registry and confirmed in a re-opened USD stage. 118 tests; the README states exactly what one run does and does not verify.
 
-## 🦷 DentaVision *(deployed — try the live demo)*
+## 🦷 DentaVision *(deployed — demo database being restored)*
 
 AI dental treatment planning SaaS, built from firsthand experience as a Patient Care Coordinator. Clinics upload a photo of a printed treatment plan → **Claude Vision** extracts CDT codes, tooth numbers and procedure notes → patients get a prioritized visit schedule on an interactive SVG tooth chart, with an AI chat assistant. Dual-role JWT auth, a Stripe subscription integration (webhook-driven status sync, subscription gating in auth middleware) wired but not processing live payments, and 20 Jest tests gating deploys through GitHub Actions.
 
@@ -88,7 +88,7 @@ Clinical document backend: a LangGraph ReAct agent with four tools over an encry
 |---|---|---|
 | **AgentForge** — multi-LLM agent builder with tool calling and SSE streaming | TypeScript, Next.js 16, Prisma | [→](https://github.com/Larmstrong1127/agentforge) |
 | **DocuChat** — RAG document Q&A with cited answers | FastAPI, ChromaDB, Sentence Transformers | [→](https://github.com/Larmstrong1127/DocuChat) |
-| **WAVets2Tech** — veteran-to-tech career platform, led a team of 4 | React SPA, ASP.NET Core Web API | [→](https://github.com/Larmstrong1127/WAVets2Tech) |
+| **WAVets2Tech** — veteran-to-tech career platform (university client project) | ASP.NET Core Web API, EF Core | [→](https://github.com/Larmstrong1127/WAVets2Tech) |
 | **TechCon Convention Site** — exhibitor and booth management | ASP.NET Core MVC, EF Core, SQLite | [→](https://github.com/Larmstrong1127/TechCon-Convention-Site) |
 | **A\* Pathfinding** — heuristic search with benchmarks across grid sizes | C# | [→](https://github.com/Larmstrong1127/A-Star-Algorithm) |
 
