@@ -17,7 +17,7 @@ M.S. Computer Science, Saint Martin's University (2024) · Dean's List 2019–20
 
 ## ⚖️ Featured — EvalForge *(LLM evaluation platform + two fine-tuned models)*
 
-> Automates model-vs-model benchmarking: an async FastAPI runner with pluggable provider and judge interfaces, a blind A/B rating room for collecting human preference data, and run-vs-run comparison — behind a Next.js dashboard. CI gates every merge on an eval-regression check.
+> Automates model-vs-model benchmarking: an async FastAPI runner with pluggable provider and judge interfaces, a blind A/B rating room for collecting human preference data, and run-vs-run comparison — behind a Next.js dashboard. An eval-regression gate is committed as a CI workflow; it is wired to `pull_request` and has not yet fired, because this repo's history is direct-to-master.
 
 **I trained and published a preference reward model that beats a public model 2.4× its size.** Bradley-Terry pairwise loss on UltraFeedback, temperature-calibrated, evaluated on a held-out split:
 
@@ -38,11 +38,11 @@ M.S. Computer Science, Saint Martin's University (2024) · Dean's List 2019–20
 
 Two halves of one pipeline question: *what made this asset, and how do artists reuse what works?*
 
-**[asset-provenance](https://github.com/Larmstrong1127/asset-provenance)** — a content-addressed registry for AI-generated media: SHA-256 identity, derivation lineage as a DAG, and **OpenUSD export** (provenance in `customData`, lineage as USD relationships). Operated against 1,943 real files from my own generation pipeline: **1,791 assets and 934 derivations registered in 110s** — and the audit found 0 of them had a recoverable model, because generation parameters were never persisted per file. The registry records that as null rather than guessing — and reads embedded **C2PA manifests** (a scan of the same corpus found only 50 of 1,791 carry one). `apr browse` gives artists a thumbnail grid with provenance filters and a clickable lineage graph; `apr demo` takes a reviewer from install to a working lineage view in under two minutes. 134 tests.
+**[asset-provenance](https://github.com/Larmstrong1127/asset-provenance)** — a content-addressed registry for AI-generated media: SHA-256 identity, derivation lineage as a DAG, and **OpenUSD export** (provenance in `customData`, lineage as USD relationships). Operated against 1,943 real files from my own generation pipeline: **1,791 assets and 934 derivations registered in 110s** — and the audit found 0 of them had a recoverable model, because generation parameters were never persisted per file. The registry records that as null rather than guessing — and reads embedded **C2PA manifests** (a scan of the same corpus found only 50 of 1,791 carry one). `apr browse` gives artists a thumbnail grid with provenance filters and a clickable lineage graph; `apr demo` takes a reviewer from install to a working lineage view in under two minutes. 144 tests.
 
 **[comfy-workflow-pack](https://github.com/Larmstrong1127/comfy-workflow-pack)** — packages a ComfyUI graph as a versioned workflow pack with a declared, validated artist-safe parameter surface. **Executed end-to-end against ComfyUI 0.32.0**: bound, submitted through its own client, rendered, then registered into the provenance registry and confirmed in a re-opened USD stage. 118 tests; the README states exactly what one run does and does not verify.
 
-## 🦷 DentaVision *(deployed — demo database being restored)*
+## 🦷 DentaVision *(frontend + API live; demo database offline, so login is currently unavailable)*
 
 AI dental treatment planning SaaS, built from firsthand experience as a Patient Care Coordinator. Clinics upload a photo of a printed treatment plan → **Claude Vision** extracts CDT codes, tooth numbers and procedure notes → patients get a prioritized visit schedule on an interactive SVG tooth chart, with an AI chat assistant. Dual-role JWT auth, a Stripe subscription integration (webhook-driven status sync, subscription gating in auth middleware) wired but not processing live payments, and 20 Jest tests gating deploys through GitHub Actions.
 
@@ -55,7 +55,7 @@ AI dental treatment planning SaaS, built from firsthand experience as a Patient 
 
 ## 🎮 Echoed Nights *(published on Steam)*
 
-My M.S. capstone: a first-person horror game built solo in Unity and C#, taken all the way through commercial release. Enemy behaviour runs on Unity NavMesh via coroutines and distance thresholds: the monster wanders to random reachable points, chases when you cross a threshold, and — the part I'd defend hardest — backs away when you get too close, because a pursuer you can predict stops being frightening. I originally architected the AI with reinforcement learning and scoped it down when stable policies proved out of reach on available compute. The 19-page capstone report is in the repo; the Unity source is not.
+My M.S. capstone: a first-person horror game built solo in Unity and C#, taken all the way through commercial release. Enemy behaviour in the release build runs on Unity NavMesh: the monster patrols a hand-placed waypoint loop and commits to a chase once you are inside a 20-unit radius. A coroutine rewrite with random-point wander and a back-away-when-crowded branch is in `Monster.cs` but commented out — it never made the build, and I described it here as shipped until I re-read the file. I originally architected the AI with reinforcement learning and scoped it down when stable policies proved out of reach on available compute. The 18-page capstone report is in the repo; the Unity source is not.
 
 [![Steam](https://img.shields.io/badge/Steam-Echoed%20Nights-1b2838?style=for-the-badge&logo=steam&logoColor=white)](https://store.steampowered.com/app/4340810/Echoed_Nights/)
 [![Repo](https://img.shields.io/badge/Report%20%26%20Docs-Echoed--Nights--Video--Game-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Larmstrong1127/Echoed-Nights-Video-Game)
