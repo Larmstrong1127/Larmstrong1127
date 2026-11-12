@@ -42,14 +42,33 @@ Two halves of one pipeline question: *what made this asset, and how do artists r
 
 **[comfy-workflow-pack](https://github.com/Larmstrong1127/comfy-workflow-pack)** — packages a ComfyUI graph as a versioned workflow pack with a declared, validated artist-safe parameter surface. **Executed end-to-end against ComfyUI 0.32.0**: bound, submitted through its own client, rendered, then registered into the provenance registry and confirmed in a re-opened USD stage. 118 tests; the README states exactly what one run does and does not verify.
 
-## 🦷 DentaVision *(frontend + API live; demo database offline, so login is currently unavailable)*
+## 🦷 DentaVision *(demo-only by design: treatment plans are PHI, so it runs on synthetic data)*
 
-AI dental treatment planning SaaS, built from firsthand experience as a Patient Care Coordinator. Clinics upload a photo of a printed treatment plan → **Claude Vision** extracts CDT codes, tooth numbers and procedure notes → patients get a prioritized visit schedule on an interactive SVG tooth chart, with an AI chat assistant. Dual-role JWT auth, a Stripe subscription integration (webhook-driven status sync, subscription gating in auth middleware) wired but not processing live payments, and 20 Jest tests gating deploys through GitHub Actions.
+AI dental treatment planning SaaS, built from firsthand experience as a Patient Care Coordinator. Clinics upload a scan or photo of a printed treatment plan → **Claude Vision** extracts CDT codes, tooth numbers and procedure notes → patients see their procedures grouped by visit on an interactive SVG tooth chart, with an AI chat assistant. Dual-role JWT auth, a Stripe subscription integration (webhook-driven status sync, subscription gating in auth middleware) wired but not processing live payments, and 20 Jest tests gating deploys through GitHub Actions.
 
 `React 18` · `Node.js/Express` · `MongoDB Atlas` · `Claude Vision` · `Stripe` · `Vercel + Render`
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-denta--vision.vercel.app-34d399?style=for-the-badge&logo=vercel&logoColor=white)](https://denta-vision.vercel.app)
-[![Source](https://img.shields.io/badge/Source-Larmstrong1127/DentaVision-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Larmstrong1127/DentaVision)
+[![Source](https://img.shields.io/badge/Source%20%26%20screenshots-Larmstrong1127/DentaVision-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Larmstrong1127/DentaVision)
+
+---
+
+## 🎬 Shorts Factory *(runs every week on my own machine)*
+
+An automated short-video pipeline in Python. A local LLM (Ollama) writes the script, a neural voice narrates it line by line, captions are timed to the measured voice length, and FFmpeg renders a 1080x1920 video. A Flask dashboard is where I review each video, edit its title and tags, and approve or reject it. It runs on one desktop with a 24 GB GPU: a SQLite job queue and a machine-wide lock run GPU jobs one at a time so they don't fight for memory, and approved videos upload through the YouTube Data API into booked per-channel slots.
+
+`Python` · `Flask` · `FFmpeg` · `Ollama` · `SQLite` · `YouTube Data API`
+
+[![Architecture](https://img.shields.io/badge/Architecture-Larmstrong1127/shorts--factory-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Larmstrong1127/shorts-factory)
+
+---
+
+## 🔧 Open source: Omnigent
+
+Pull requests to [omnigent-ai/omnigent](https://github.com/omnigent-ai/omnigent), an open-source AI agent platform:
+
+- [#8886](https://github.com/omnigent-ai/omnigent/pull/8886): the live `/openapi.json` referenced a `ServerStreamEvent` schema it never defined. It now does, through one shared schema builder, with tests that check every reference resolves.
+- [#13693](https://github.com/omnigent-ai/omnigent/pull/13693): a "last 80 lines" stderr buffer meant to cap memory didn't, because one line can be any length. It is now bounded by characters, with tests that fail on the old code.
+- [#8887](https://github.com/omnigent-ai/omnigent/pull/8887), [#8784](https://github.com/omnigent-ai/omnigent/pull/8784), [#8781](https://github.com/omnigent-ai/omnigent/pull/8781): typed and documented API responses, and a `--policies` CLI flag.
 
 ---
 
