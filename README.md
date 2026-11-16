@@ -67,7 +67,8 @@ An automated short-video pipeline in Python. A local LLM (Ollama) writes the scr
 Pull requests to [omnigent-ai/omnigent](https://github.com/omnigent-ai/omnigent), an open-source AI agent platform:
 
 - [#8886](https://github.com/omnigent-ai/omnigent/pull/8886) **(merged)**: the live `/openapi.json` referenced a `ServerStreamEvent` schema it never defined. It now does, through one shared schema builder, with tests that check every reference resolves.
-- [#8887](https://github.com/omnigent-ai/omnigent/pull/8887), [#8784](https://github.com/omnigent-ai/omnigent/pull/8784), [#8781](https://github.com/omnigent-ai/omnigent/pull/8781): typed and documented API responses, and a `--policies` CLI flag.
+- [#8784](https://github.com/omnigent-ai/omnigent/pull/8784) **(merged)**: documents both request bodies `POST /v1/sessions` accepts in the OpenAPI spec.
+- [#8887](https://github.com/omnigent-ai/omnigent/pull/8887), [#8781](https://github.com/omnigent-ai/omnigent/pull/8781) (in review): a typed `HostList` response for `GET /v1/hosts`, and a `--policies` CLI flag.
 
 ---
 
